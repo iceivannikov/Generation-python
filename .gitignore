@@ -1,0 +1,23 @@
+# Virtual environment
+.venv/
+venv/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# PyCharm
+.idea/
+
+# OS
+.DS_Store
+
+# Logs
+*.log
+
+# Test / coverage
+.coverage
+htmlcov/
+
+# Environment variables
+.env
