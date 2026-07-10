@@ -1,28 +1,20 @@
-from math import log
+def main(matrix):
+    n = len(matrix)
+    for i in range(n):
+        for j in range(i, n - i - 1):
+            matrix[i][j], matrix[n - i - 1][j] = matrix[n - i - 1][j], matrix[i][j]
+            matrix[i][n - j - 1], matrix[n - i - 1][n - j - 1] = matrix[n - i - 1][n - j - 1], matrix[i][n - j - 1]
+    return matrix
 
+def print_matrix(matrix):
+    for row in matrix:
+        print(*row)
 
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-def print_input():
-    data = [4, 9, -4, 2, 3, 1, 1]
-    value = 1
-    for i in range(len(data) - 1, -1, -1):
-        if data[i] == value:
-            return i
-    return "ERROR!"
-
-
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    print_input()
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    matrix = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9]
+    ]
+    matrix = main(matrix)
+    print_matrix(matrix)
