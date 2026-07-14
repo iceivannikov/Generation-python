@@ -1,5 +1,6 @@
 from datetime import date
 
+
 def is_correct(day, month, year):
     try:
         date(year, month, day)
@@ -9,5 +10,15 @@ def is_correct(day, month, year):
 
 
 if __name__ == "__main__":
-    print(is_correct(31, 12, 2021))
-    print(is_correct(31, 13, 2021))
+    count = 0
+    while True:
+        dt = input()
+        if dt == "end":
+            break
+        day, month, year = dt.split(".")
+        if is_correct(int(day), int(month), int(year)):
+            print("Корректная")
+            count += 1
+        else:
+            print("Некорректная")
+    print(count)
