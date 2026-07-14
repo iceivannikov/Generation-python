@@ -1,19 +1,12 @@
-from datetime import date, timedelta
+from datetime import date
 
-
-def saturdays_between_two_dates(date_1, date_2):
-    start = min(date_1, date_2)
-    end = max(date_1, date_2)
-    result = 0
-    n = (end - start).days
-    for _ in range(n + 1):
-        if start.weekday() == 5:
-            result += 1
-        start += timedelta(days=1)
-    return result
+def two_dates(date1, date2):
+    first = date.fromisoformat(date1)
+    second = date.fromisoformat(date2)
+    return min(first, second).strftime("%d-%m (%Y)")
 
 
 if __name__ == "__main__":
-    print(saturdays_between_two_dates(date(2021, 11, 1), date(2021, 11, 22)))
-    print(saturdays_between_two_dates(date(2020, 7, 26), date(2020, 7, 2)))
-    print(saturdays_between_two_dates(date(2018, 7, 13), date(2018, 7, 13)))
+    print(two_dates("2021-05-12", "2021-05-04"))
+    print(two_dates("1999-07-14", "1999-07-14"))
+    print(two_dates("2026-12-18", "2026-10-01"))
