@@ -1,24 +1,23 @@
-from datetime import date
+from datetime import datetime
 
+FORMAT = '%d.%m.%Y %H:%M:%S'
 
-def is_correct(day, month, year):
-    try:
-        date(year, month, day)
-        return True
-    except ValueError:
-        return False
+data = {'Дима': ('03.11.2021 09:31:18', '03.11.2021 11:41:28'),
+        'Геор': ('01.11.2021 09:03:04', '01.11.2021 12:40:35'),
+        'Анна': ('02.11.2021 04:41:54', '02.11.2021 05:39:40'),
+        'Илина': ('02.11.2021 01:36:40', '02.11.2021 04:48:27'),
+        'Герман': ('04.11.2021 07:51:19', '04.11.2021 09:53:53'),
+        'Руслан': ('01.11.2021 11:26:06', '01.11.2021 12:56:24'),
+        'Лера': ('03.11.2021 11:09:41', '03.11.2021 14:37:41'),
+        'Егор': ('03.11.2021 05:29:38', '03.11.2021 06:01:59'),
+        'Максим': ('05.11.2021 13:05:03', '05.11.2021 14:27:41'),
+        'Саша': ('03.11.2021 04:14:26', '03.11.2021 05:10:58'),
+        'Марина': ('05.11.2021 15:21:06', '05.11.2021 18:33:46')}
 
+for key, value in data.items():
+    tm = datetime.strptime(value[1], FORMAT) - datetime.strptime(value[0], FORMAT)
+    data[key] = tm
 
-if __name__ == "__main__":
-    count = 0
-    while True:
-        dt = input()
-        if dt == "end":
-            break
-        day, month, year = dt.split(".")
-        if is_correct(int(day), int(month), int(year)):
-            print("Корректная")
-            count += 1
-        else:
-            print("Некорректная")
-    print(count)
+name, delta = min(data.items(), key=lambda x: x[1])
+print(name)
+print(delta)
