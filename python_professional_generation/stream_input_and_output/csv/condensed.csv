@@ -1,0 +1,4 @@
+device,type,capacity,location
+crane,overhead,10,Moscow
+hoist,electric,5,Tula
+winch,manual,2,Kazan
